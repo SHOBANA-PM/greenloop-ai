@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>GreenLoop AI</title>
+<link rel="stylesheet" href="css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="shell">
+  <div class="notch"></div>
+  <div class="screen">
+
+    <!-- LANDING -->
+    <div class="page" id="pg-land">
+      <div class="land-bg">
+        <div class="lb l1"></div>
+        <div class="lb l2"></div> 
+        <div class="lb l3"></div>
+      </div>
+      <div class="land-body">
+        <div class="brand-row">
+          <div class="brand-ico">
+            <svg viewBox="0 0 40 40" fill="none" width="26" height="26">
+              <path d="M20 4C11 4 4 11 4 20s7 16 16 16 16-7 16-16S29 4 20 4zm0 3 3.5 6h-7L20 7zm-10 9h6.5l-3 5.5L10 16zm20 0h-6.5l3 5.5L30 16zm-10 10-3.5-6h7L20 26z" fill="white"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="brand-name">GreenLoop <span>AI</span></h1>
+            <p class="brand-tag">Turn Waste Into Worth 🌿</p>
+          </div>
+        </div>
+        <div class="lpills">
+          <span class="lpill">📷 Scan</span>
+          <span class="lpill">🎓 Learn</span>
+          <span class="lpill">💰 Sell</span>
+          <span class="lpill">🌍 Community</span>
+        </div>
+        <p class="land-desc">AI-powered platform that identifies waste and helps you transform it into valuable products through community tutorials.</p>
+        <button class="btn-cta" onclick="showPage('pg-signup')">🚀 Get Started Free</button>
+        <button class="btn-sec" onclick="showPage('pg-login')">Already a member? Sign In</button>
+      </div>
+    </div>
+
+    <!-- SIGN UP -->
+    <div class="page" id="pg-signup">
+      <div class="auth-box">
+        <button class="bk-btn" onclick="showPage('pg-land')">←</button>
+        <div class="auth-logo">
+          <div class="brand-ico sm">
+            <svg viewBox="0 0 40 40" fill="none" width="16" height="16">
+              <path d="M20 4C11 4 4 11 4 20s7 16 16 16 16-7 16-16S29 4 20 4zm0 3 3.5 6h-7L20 7zm-10 9h6.5l-3 5.5L10 16zm20 0h-6.5l3 5.5L30 16zm-10 10-3.5-6h7L20 26z" fill="white"/>
+            </svg>
+          </div>
+          <span class="auth-logo-txt">GreenLoop AI</span>
+        </div>
+        <h2 class="auth-h">Create Account</h2>
+        <p class="auth-sub">Join the eco-warrior community</p>
+        <label class="lbl">Full Name *</label>
+        <input class="inp" id="su-name" type="text" placeholder="Priya Sharma"/>
+        <label class="lbl">Email *</label>
+        <input class="inp" id="su-email" type="email" placeholder="priya@email.com"/>
+        <label class="lbl">Password * (min 6 chars)</label>
+        <input class="inp" id="su-pass" type="password" placeholder="minimum 6 characters"/>
+        <label class="lbl">City</label>
+        <input class="inp" id="su-city" type="text" placeholder="Chennai"/>
+        <label class="lbl">Mobile Number (for order SMS alerts)</label>
+        <input class="inp" id="su-phone" type="tel" placeholder="9876543210"/>
+        <button class="btn-green" onclick="doSignup()" style="margin-top:12px">Create Account</button>
+        <p class="auth-sw">Have an account? <a onclick="showPage('pg-login')">Sign In</a></p>
+      </div>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="page" id="pg-login">
+      <div class="auth-box">
+        <button class="bk-btn" onclick="showPage('pg-land')">←</button>
+        <div class="auth-logo">
+          <div class="brand-ico sm">
+            <svg viewBox="0 0 40 40" fill="none" width="16" height="16">
+              <path d="M20 4C11 4 4 11 4 20s7 16 16 16 16-7 16-16S29 4 20 4zm0 3 3.5 6h-7L20 7zm-10 9h6.5l-3 5.5L10 16zm20 0h-6.5l3 5.5L30 16zm-10 10-3.5-6h7L20 26z" fill="white"/>
+            </svg>
+          </div>
+          <span class="auth-logo-txt">GreenLoop AI</span>
+        </div>
+        <h2 class="auth-h">Welcome Back!</h2>
+        <p class="auth-sub">Sign in to continue</p>
+        <label class="lbl">Email *</label>
+        <input class="inp" id="li-email" type="email" placeholder="priya@email.com"/>
+        <label class="lbl">Password *</label>
+        <input class="inp" id="li-pass" type="password" placeholder="your password"/>
+        <p style="text-align:right;margin-bottom:14px;margin-top:6px">
+          <a style="font-size:12px;color:var(--g);font-weight:600;cursor:pointer">Forgot Password?</a>
+        </p>
+        <button class="btn-green" onclick="doLogin()">Sign In</button>
+        <p class="auth-sw">New here? <a onclick="showPage('pg-signup')">Create Account</a></p>
+      </div>
+    </div>
+
+    <!-- HOME -->
+    <div class="page" id="pg-home">
+      <div class="topbar">
+        <div>
+          <p class="greet-txt" id="greet-txt">Good morning,</p>
+          <h2 class="uname" id="uname-txt">EcoWarrior 🌱</h2>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:20px;cursor:pointer" onclick="popToast('No new notifications')">🔔</span>
+          <div class="av" id="home-av" onclick="showPage('pg-profile')">E</div>
+        </div>
+      </div>
+      <div class="srch-bar" onclick="showPage('pg-search')">
+        <span>🔍</span>
+        <span style="font-size:13px;color:#bbb;flex:1">Search items, tutorials, products...</span>
+        <span style="font-size:11px;color:#ddd">tap</span>
+      </div>
+      <div class="qgrid">
+        <div class="qa" onclick="showPage('pg-scan')">
+          <div class="qi" style="background:#e8f5e8">📷</div>
+          <span>Scan</span>
+        </div>
+        <div class="qa" onclick="showPage('pg-tutorials')">
+          <div class="qi" style="background:#fff3e0">🎓</div>
+          <span>Tutorials</span>
+        </div>
+        <div class="qa" onclick="showPage('pg-sell')">
+          <div class="qi" style="background:#fce4ec">💰</div>
+          <span>Sell</span>
+        </div>
+        <div class="qa" onclick="showPage('pg-market')">
+          <div class="qi" style="background:#e3f2fd">🛒</div>
+          <span>Market</span>
+        </div>
+      </div>
+      <div class="hero-card" onclick="openTutById(1)">
+        <p class="hero-tag">🔥 TRENDING</p>
+        <p class="hero-title">Jeans to Tote Bag Tutorial</p>
+        <p class="hero-sub">147k views · Tap to watch</p>
+        <div class="hero-play">▶</div>
+      </div>
+      <h3 class="sec-h" style="padding:0 16px;margin-bottom:10px">🔥 Trending Ideas</h3>
+      <div id="home-list" style="padding:0 16px;display:flex;flex-direction:column;gap:10px"></div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="page" id="pg-search">
+      <div class="phdr">
+        <button class="bk-btn" onclick="showPage('pg-home')">←</button>
+        <h2>🔍 Search</h2>
+        <div></div>
+      </div>
+      <div style="padding:12px 16px">
+        <input class="inp" id="srch-q" type="text" placeholder="Search tutorials, products, waste types..." oninput="doSearch(this.value)"/>
+      </div>
+      <div class="scats">
+        <span class="scat active" onclick="setScat(this,'all')">All</span>
+        <span class="scat" onclick="setScat(this,'tut')">Tutorials</span>
+        <span class="scat" onclick="setScat(this,'mkt')">Market</span>
+      </div>
+      <div id="srch-res" style="padding:0 16px"></div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- SCAN -->
+    <div class="page" id="pg-scan">
+      <div class="phdr">
+        <button class="bk-btn" onclick="showPage('pg-home')">←</button>
+        <h2>📷 AI Scanner</h2>
+        <div></div>
+      </div>
+      <div style="padding:14px 16px 8px">
+        <div class="scan-frame" id="scan-frame">
+          <div class="sc tl"></div>
+          <div class="sc tr"></div>
+          <div class="sc bl"></div>
+          <div class="sc br"></div>
+          <div class="scan-line"></div>
+          <img id="scan-prev" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;z-index:3"/>
+          <video id="cam-vid" autoplay playsinline muted style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;z-index:3"></video>
+          <div id="scan-ph" class="scan-ph">
+            <span style="font-size:38px">📸</span>
+            <p style="margin-top:8px">AI-powered waste detection</p>
+            <p style="font-size:11px;opacity:.5;margin-top:4px">Powered by Claude Vision AI</p>
+          </div>
+        </div>
+      </div>
+      <canvas id="cam-cv" style="display:none"></canvas>
+      <div class="scan-btns">
+        <button class="sbtn-cam" onclick="startCam()">📷 Camera</button>
+        <button class="sbtn-up" onclick="document.getElementById('scan-file').click()">🖼 Upload</button>
+      </div>
+      <input type="file" id="scan-file" accept="image/*" style="display:none" onchange="onScanFile(event)"/>
+      <div id="cam-acts" style="display:none;padding:0 16px">
+        <button class="btn-green" style="margin-bottom:8px" onclick="capturePhoto()">⚡ Capture and Analyse</button>
+        <button class="btn-red" onclick="stopCam()">✕ Stop Camera</button>
+      </div>
+      <div id="scan-spin" style="display:none;flex-direction:column;align-items:center;gap:12px;padding:24px;text-align:center">
+        <div class="spin-ring"></div>
+        <p style="font-size:13px;color:var(--g)">🤖 Claude AI analysing...</p>
+      </div>
+      <div id="scan-out" style="display:none;padding:0 16px 16px">
+        <div class="det-row">
+          <span style="font-size:22px">✅</span>
+          <div>
+            <p style="font-size:11px;color:var(--g);font-weight:700">ITEM DETECTED</p>
+            <p class="det-name" id="det-name">Waste Item</p>
+          </div>
+          <div class="conf-pill" id="conf-pill">90%</div>
+        </div>
+        <div id="scan-kws" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
+        <h4 class="mini-h">Top Reuse Idea</h4>
+        <div class="idea-card" onclick="goScanToTuts()">
+          <div class="idea-emo" id="idea-emo">♻️</div>
+          <div>
+            <p class="idea-name" id="idea-name">Creative Product</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">
+              <span class="ichip">✂️ Cut</span>
+              <span class="ichip">🎨 Decorate</span>
+              <span class="ichip">♻️ Eco</span>
+            </div>
+          </div>
+        </div>
+        <h4 class="mini-h">More Ideas</h4>
+        <div id="more-ideas" style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"></div>
+        <button class="btn-green" onclick="goScanToTuts()">🎬 See Matching Tutorials</button>
+        <button class="btn-amber" onclick="showPage('pg-sell')" style="margin-top:8px">✅ Already made it — Sell now</button>
+      </div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- TUTORIALS -->
+    <div class="page" id="pg-tutorials">
+      <div class="phdr">
+        <button class="bk-btn" onclick="tutBack()">←</button>
+        <h2>🎓 Tutorials</h2>
+        <span style="font-size:22px;cursor:pointer;color:var(--g)" onclick="showPage('pg-sell')">➕</span>
+      </div>
+      <div id="tut-match-bar" style="display:none;margin:8px 16px 4px;padding:10px 14px;background:#fef3c7;border-radius:10px;border:1px solid #fcd34d">
+        <p style="font-size:11px;color:#92400e;font-weight:700">MATCHING YOUR SCAN</p>
+        <p id="tut-match-txt" style="font-size:13px;font-weight:700;color:#92400e;margin-top:2px"></p>
+        <span onclick="clearScanFilter()" style="font-size:11px;color:#92400e;cursor:pointer;text-decoration:underline">Show all tutorials</span>
+      </div>
+      <div id="tut-list" style="padding:8px 16px;display:flex;flex-direction:column;gap:12px"></div>
+      <div id="tut-detail" style="display:none"></div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- SELL -->
+    <div class="page" id="pg-sell">
+      <div class="phdr">
+        <button class="bk-btn" onclick="showPage('pg-home')">←</button>
+        <h2>📤 Share Creation</h2>
+        <div></div>
+      </div>
+      <p style="font-size:12px;color:#aaa;padding:4px 16px 12px">Upload tutorial first — appears in Tutorials AND Marketplace automatically</p>
+      <div style="padding:0 16px">
+        <div style="display:flex;gap:10px;margin-bottom:0">
+          <div class="up-slot big-up" onclick="document.getElementById('up-photo').click()">
+            <img id="up-photo-prev" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:10px"/>
+            <div id="up-photo-ph" style="text-align:center">
+              <span style="font-size:26px">📸</span>
+              <p style="font-size:11px;color:#aaa;margin-top:4px">Product Photo *</p>
+            </div>
+          </div>
+          <div class="up-slot sm-up" onclick="document.getElementById('up-video').click()">
+            <video id="up-video-prev" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:8px"></video>
+            <div id="up-video-ph" style="text-align:center">
+              <span style="font-size:20px">🎥</span>
+              <p style="font-size:10px;color:#aaa;margin-top:4px">Tutorial Video</p>
+            </div>
+          </div>
+        </div>
+        <input type="file" id="up-photo" accept="image/*" style="display:none" onchange="onUpPhoto(event)"/>
+        <input type="file" id="up-video" accept="video/*" style="display:none" onchange="onUpVideo(event)"/>
+        <label class="lbl" style="margin-top:14px">Waste Material Used * (tap to select)</label>
+        <div class="wtags">
+          <span class="wt" onclick="toggleWT(this)">Plastic Bottle</span>
+          <span class="wt" onclick="toggleWT(this)">Old Jeans / Denim</span>
+          <span class="wt" onclick="toggleWT(this)">Cardboard Box</span>
+          <span class="wt" onclick="toggleWT(this)">Glass Jar</span>
+          <span class="wt" onclick="toggleWT(this)">Tin Can</span>
+          <span class="wt" onclick="toggleWT(this)">Ice Cream Sticks</span>
+          <span class="wt" onclick="toggleWT(this)">Newspaper</span>
+          <span class="wt" onclick="toggleWT(this)">Old Clothes</span>
+          <span class="wt" onclick="toggleWT(this)">CD / DVD</span>
+          <span class="wt" onclick="toggleWT(this)">Rubber Tyres</span>
+        </div>
+        <label class="lbl">What did you make? *</label>
+        <input class="inp" id="up-name" type="text" placeholder="e.g. Hanging Bottle Planter"/>
+        <label class="lbl">Description</label>
+        <textarea class="inp" id="up-desc" style="min-height:64px;resize:none" placeholder="Describe your creation..."></textarea>
+        <label class="lbl">Step-by-Step Tutorial * (min 2 steps)</label>
+        <div id="steps-box" style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px"></div>
+        <button class="add-step-btn" onclick="addStep()">+ Add Step</button>
+        <div style="display:flex;gap:12px;margin-bottom:14px">
+          <div style="flex:1">
+            <label class="lbl">Price (Rs.) *</label>
+            <input class="inp" id="up-price" type="number" placeholder="120"/>
+          </div>
+          <div style="flex:1">
+            <label class="lbl">Stock</label>
+            <input class="inp" id="up-stock" type="number" placeholder="5"/>
+          </div>
+        </div>
+        <button class="btn-green" onclick="doPublish()">🌿 Publish to Community</button>
+      </div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- MARKET -->
+    <div class="page" id="pg-market">
+      <div class="mkt-bar">
+        <h2 style="font-family:Outfit,sans-serif;font-size:16px;font-weight:700">🛒 GreenLoop Market</h2>
+        <button class="cart-top-btn" onclick="showPage('pg-cart')">
+          🛒 <span id="cart-badge" style="display:none;background:#ef4444;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:10px">0</span>
+        </button>
+      </div>
+      <div class="mcats">
+        <span class="mcat active" onclick="setMcat(this,'All')">All</span>
+        <span class="mcat" onclick="setMcat(this,'Planters')">Planters</span>
+        <span class="mcat" onclick="setMcat(this,'Bags')">Bags</span>
+        <span class="mcat" onclick="setMcat(this,'Home Decor')">Home Decor</span>
+        <span class="mcat" onclick="setMcat(this,'Art')">Art</span>
+      </div>
+      <div id="mkt-grid" class="mgrid"></div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- CART -->
+    <div class="page" id="pg-cart">
+      <div class="phdr">
+        <button class="bk-btn" onclick="showPage('pg-market')">←</button>
+        <h2>🛒 My Cart</h2>
+        <div></div>
+      </div>
+      <div id="cart-body" style="padding:16px;display:flex;flex-direction:column;gap:12px"></div>
+      <div id="cart-foot" style="display:none;padding:0 16px 16px">
+        <div class="cart-summ">
+          <div class="srow"><span>Subtotal</span><b id="c-sub">Rs.0</b></div>
+          <div class="srow"><span>Delivery</span><b style="color:var(--g)">FREE 🎉</b></div>
+          <div class="srow total-row"><span>Total</span><b id="c-tot">Rs.0</b></div>
+        </div>
+        <button class="btn-green" onclick="doCheckout()">✅ Place Order</button>
+        <button class="btn-amber" onclick="showPage('pg-market')" style="margin-top:8px">← Continue Shopping</button>
+      </div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="page" id="pg-profile">
+      <div class="prof-hero">
+        <button class="bk-white" onclick="showPage('pg-home')">←</button>
+        <div class="prof-av" id="prof-av">E</div>
+        <h2 class="prof-name" id="prof-name">EcoWarrior</h2>
+        <p class="prof-email" id="prof-email">user@email.com</p>
+        <p class="prof-city" id="prof-city">📍 India</p>
+        <div class="prof-badges">
+          <span class="pbadge">🌿 Eco Warrior</span>
+          <span class="pbadge">♻️ Recycler</span>
+          <span class="pbadge">💰 Seller</span>
+        </div>
+      </div>
+      <div class="prof-stats-row">
+        <div class="pstat"><p class="pstat-v" id="ps-scans">0</p><p class="pstat-l">Scans</p></div>
+        <div class="pstat"><p class="pstat-v" id="ps-tuts">0</p><p class="pstat-l">Tutorials</p></div>
+        <div class="pstat"><p class="pstat-v" id="ps-sales">0</p><p class="pstat-l">Sales</p></div>
+        <div class="pstat"><p class="pstat-v" id="ps-waste">0kg</p><p class="pstat-l">Saved</p></div>
+      </div>
+      <div style="padding:0 16px">
+        <h3 class="sec-h" style="margin-top:16px">💰 Earnings</h3>
+        <div class="earn-card">
+          <p style="font-size:12px;opacity:.8">Total Earnings</p>
+          <p class="earn-val" id="ps-earn">Rs.0</p>
+          <p style="font-size:11px;opacity:.7" id="ps-earn-sub">Start selling to earn!</p>
+        </div>
+        <h3 class="sec-h">📦 My Listings</h3>
+        <div id="prof-listings">
+          <p style="text-align:center;font-size:13px;color:#bbb;padding:14px">No listings yet.
+            <span onclick="showPage('pg-sell')" style="color:var(--g);font-weight:600;cursor:pointer">List something!</span>
+          </p>
+        </div>
+        <h3 class="sec-h">⚙️ Settings</h3>
+        <div class="settings-list">
+          <div class="set-row" onclick="popToast('Edit profile coming soon')"><span>✏️ Edit Profile</span><span>›</span></div>
+          <div class="set-row" onclick="popToast('Notifications coming soon')"><span>🔔 Notifications</span><span>›</span></div>
+          <div class="set-row" onclick="popToast('Privacy coming soon')"><span>🔒 Privacy</span><span>›</span></div>
+          <div class="set-row" onclick="doLogout()" style="color:#ef4444"><span>🚪 Logout</span><span>›</span></div>
+        </div>
+      </div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="page" id="pg-dash">
+      <div class="phdr">
+        <button class="bk-btn" onclick="showPage('pg-home')">←</button>
+        <h2>📊 Dashboard</h2>
+        <div></div>
+      </div>
+      <div style="padding:0 16px 16px">
+        <div class="impact-card">
+          <p style="font-size:11px;opacity:.8;font-weight:700;letter-spacing:.05em">YOUR ECO IMPACT</p>
+          <p class="impact-val" id="d-waste">0 kg</p>
+          <p style="font-size:12px;opacity:.7">waste diverted from landfill</p>
+        </div>
+        <div class="d4grid">
+          <div class="dcard green"><p class="dval" id="d-earn">Rs.0</p><p class="dlbl">Earnings</p></div>
+          <div class="dcard blue"><p class="dval" id="d-scans">0</p><p class="dlbl">Scans</p></div>
+          <div class="dcard amber"><p class="dval" id="d-listed">0</p><p class="dlbl">Listed</p></div>
+          <div class="dcard teal"><p class="dval" id="d-sold">0</p><p class="dlbl">Sold</p></div>
+        </div>
+        <h3 class="sec-h" style="margin-top:4px">📋 Recent Activity</h3>
+        <div id="d-activity">
+          <p style="text-align:center;font-size:13px;color:#bbb;padding:14px">No activity yet. Start scanning!</p>
+        </div>
+        <h3 class="sec-h">🌍 Community Stats</h3>
+        <div class="comm-box">
+          <div class="crow"><span>Tutorials on platform</span><b id="cs-tuts">4</b></div>
+          <div class="crow"><span>Products in market</span><b id="cs-prods">6</b></div>
+          <div class="crow"><span>Community waste saved</span><b>12.4 kg</b></div>
+          <div class="crow" style="border:none"><span>Active eco-warriors</span><b>1,247</b></div>
+        </div>
+      </div>
+      <div style="height:90px"></div>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bnav">
+      <div class="bn active" id="bn-home" onclick="showPage('pg-home');setNav('bn-home')">
+        <span>🏠</span><span>Home</span>
+      </div>
+      <div class="bn" id="bn-scan" onclick="showPage('pg-scan');setNav('bn-scan')">
+        <span>📷</span><span>Scan</span>
+      </div>
+      <div class="bn bn-mid" id="bn-mid" onclick="showPage('pg-scan');setNav('bn-mid')">
+        <div class="bn-cam">📷</div>
+      </div>
+      <div class="bn" id="bn-mkt" onclick="showPage('pg-market');setNav('bn-mkt')">
+        <span>🛒</span><span>Market</span>
+      </div>
+      <div class="bn" id="bn-dash" onclick="showPage('pg-dash');setNav('bn-dash')">
+        <span>📊</span><span>Stats</span>
+      </div>
+    </nav>
+
+  </div>
+</div>
+
+<div id="toast-msg" class="toast-msg"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
